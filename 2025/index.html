@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使命篇 · 2025 南华青年领袖证书</title>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v18.0"></script>
+<style>
+  :root {
+    --main: #1A1A2E;
+    --deep: #16213E;
+    --accent: #0F3460;
+    --cohort: #3A9B6F;
+    --cohort-light: #6ECFA0;
+    --cohort-dim: rgba(58,155,111,0.15);
+    --gold: #C8973A;
+    --text: #F0EAD6;
+    --muted: #A89B7A;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--main); color: var(--text); font-family: 'Georgia', 'STSong', 'SimSun', serif; line-height: 1.8; }
+
+  .hero {
+    background: linear-gradient(160deg, var(--deep) 0%, #0D2117 60%, #1A3A2A 100%);
+    border-bottom: 3px solid var(--cohort);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(58,155,111,0.2) 0%, transparent 70%); }
+  .hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+  .hero-logos { display: flex; align-items: center; justify-content: center; gap: 24px; margin-bottom: 28px; }
+  .hero-logos img { height: 72px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+  .hero-logos .logo-divider { width: 1px; height: 48px; background: rgba(58,155,111,0.4); }
+  .school-tag { display: inline-block; border: 1px solid rgba(58,155,111,0.6); border-radius: 20px; padding: 4px 16px; font-size: 11px; letter-spacing: 2px; color: var(--cohort-light); margin-bottom: 20px; }
+  .cohort-badge { display: inline-block; background: var(--cohort-dim); border: 1px solid var(--cohort); border-radius: 6px; padding: 6px 20px; font-size: 13px; color: var(--cohort-light); letter-spacing: 3px; margin-bottom: 16px; }
+  .hero-title { font-size: clamp(28px, 6vw, 48px); color: var(--white); font-weight: normal; margin-bottom: 8px; letter-spacing: 2px; }
+  .hero-title span { color: var(--cohort-light); }
+  .hero-en { font-size: 13px; color: var(--muted); letter-spacing: 3px; margin-bottom: 24px; }
+  .hero-date { font-size: 14px; color: var(--cohort-light); margin-bottom: 28px; }
+  .hero-motto { font-size: 16px; color: rgba(240,234,214,0.75); font-style: italic; border-left: 3px solid var(--cohort); padding-left: 16px; text-align: left; display: inline-block; }
+
+  .nav { background: var(--deep); border-bottom: 1px solid rgba(58,155,111,0.3); padding: 0 24px; display: flex; justify-content: center; overflow-x: auto; position: sticky; top: 0; z-index: 100; }
+  .nav a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 1px; padding: 14px 16px; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+  .nav a:hover { color: var(--cohort-light); border-bottom-color: var(--cohort); }
+
+  .section { max-width: 760px; margin: 0 auto; padding: 56px 24px; }
+  .section + .section { border-top: 1px solid rgba(58,155,111,0.15); }
+  .section-label { font-size: 10px; letter-spacing: 4px; color: var(--cohort); text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-size: 24px; color: var(--white); font-weight: normal; margin-bottom: 24px; }
+  p { color: rgba(240,234,214,0.85); margin-bottom: 16px; }
+
+  .significance { background: var(--cohort-dim); border-left: 4px solid var(--cohort); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 24px 0; }
+  .significance p { margin: 0; color: var(--text); }
+
+  .quote-block { background: var(--deep); border: 1px solid rgba(58,155,111,0.3); border-radius: 12px; padding: 28px 32px; margin: 32px 0; text-align: center; }
+  .quote-block blockquote { font-size: 17px; color: var(--white); font-style: italic; line-height: 1.8; margin-bottom: 12px; }
+  .quote-block cite { font-size: 12px; color: var(--cohort-light); letter-spacing: 1px; }
+
+  /* Lecture cards */
+  .lecture-card { background: rgba(58,155,111,0.07); border: 1px solid rgba(58,155,111,0.25); border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+  .lecture-card .lc-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+  .lecture-card .lc-num { font-size: 10px; letter-spacing: 3px; color: var(--cohort); background: var(--cohort-dim); padding: 4px 10px; border-radius: 4px; white-space: nowrap; margin-top: 4px; }
+  .lecture-card .lc-title { font-size: 18px; color: var(--white); font-weight: normal; margin-bottom: 4px; }
+  .lecture-card .lc-speaker { font-size: 12px; color: var(--cohort-light); }
+  .lecture-card .lc-body { font-size: 14px; color: rgba(240,234,214,0.8); line-height: 1.8; }
+  .lecture-card .lc-points { margin-top: 12px; padding-left: 0; list-style: none; }
+  .lecture-card .lc-points li { padding: 6px 0 6px 16px; border-left: 2px solid rgba(58,155,111,0.3); margin-bottom: 6px; font-size: 13px; color: rgba(240,234,214,0.75); }
+  .lecture-card .lc-points li strong { color: var(--cohort-light); }
+
+  /* SRCP */
+  .srcp-box { background: linear-gradient(135deg, rgba(58,155,111,0.1) 0%, rgba(15,52,96,0.2) 100%); border: 1px solid rgba(58,155,111,0.35); border-radius: 12px; padding: 28px; margin: 24px 0; }
+  .srcp-box h3 { font-size: 16px; color: var(--cohort-light); font-weight: normal; margin-bottom: 16px; letter-spacing: 1px; }
+  .srcp-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .srcp-stat { text-align: center; padding: 14px; background: rgba(58,155,111,0.08); border-radius: 8px; border: 1px solid rgba(58,155,111,0.2); }
+  .srcp-stat .s-num { font-size: 28px; color: var(--cohort-light); }
+  .srcp-stat .s-label { font-size: 11px; color: var(--muted); }
+  .design-thinking { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 16px; }
+  .dt-step { background: rgba(58,155,111,0.1); border: 1px solid rgba(58,155,111,0.2); border-radius: 8px; padding: 12px 8px; text-align: center; }
+  .dt-step .dt-num { font-size: 10px; color: var(--cohort); margin-bottom: 4px; }
+  .dt-step .dt-name { font-size: 13px; color: var(--white); }
+  .dt-step .dt-desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* Poem */
+  .poem-block { background: var(--deep); border: 1px solid rgba(58,155,111,0.25); border-radius: 12px; padding: 32px; margin: 24px 0; text-align: center; }
+  .poem-block .poem-title { font-size: 11px; letter-spacing: 3px; color: var(--cohort); margin-bottom: 16px; }
+  .poem-block p { font-size: 15px; color: rgba(240,234,214,0.9); line-height: 2.2; margin: 0; font-style: italic; }
+  .poem-block cite { display: block; margin-top: 16px; font-size: 12px; color: var(--muted); }
+
+  /* Flow */
+  .flow { margin-top: 24px; }
+  .flow-day { margin-bottom: 32px; }
+  .flow-day-label { font-size: 11px; letter-spacing: 3px; color: var(--cohort); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(58,155,111,0.2); }
+  .flow-item { display: flex; gap: 16px; margin-bottom: 10px; align-items: flex-start; }
+  .flow-dot { width: 8px; height: 8px; background: var(--cohort); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .flow-text { font-size: 14px; color: rgba(240,234,214,0.8); }
+  .flow-text strong { color: var(--white); }
+
+  /* Milestones */
+  .milestones { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; margin-top: 24px; }
+  .milestone { background: rgba(58,155,111,0.08); border: 1px solid rgba(58,155,111,0.2); border-radius: 10px; padding: 20px; text-align: center; }
+  .milestone .num { font-size: 28px; color: var(--cohort-light); margin-bottom: 4px; }
+  .milestone .label { font-size: 12px; color: var(--muted); }
+
+  /* FB */
+  .fb-wrap { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+  .fb-wrap .fb-post { flex: 1 1 300px; min-width: 0; }
+
+  /* Photo Wall */
+  .photo-section { background: var(--deep); padding: 56px 0; }
+  .photo-track-wrap { overflow: hidden; }
+  .photo-track { display: flex; gap: 12px; padding: 0 24px 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; cursor: grab; }
+  .photo-track:active { cursor: grabbing; }
+  .photo-track::-webkit-scrollbar { height: 4px; }
+  .photo-track::-webkit-scrollbar-thumb { background: var(--cohort); border-radius: 2px; }
+  .photo-item { flex-shrink: 0; width: 280px; height: 200px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(58,155,111,0.25); scroll-snap-align: start; background: rgba(58,155,111,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+  .photo-item:hover { transform: scale(1.02); border-color: var(--cohort); }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder { text-align: center; color: rgba(58,155,111,0.5); font-size: 12px; padding: 16px; }
+  .photo-placeholder .ph-icon { font-size: 32px; margin-bottom: 8px; }
+
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; padding: 24px; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 8px; }
+  .lightbox-close { position: absolute; top: 20px; right: 24px; color: var(--muted); font-size: 28px; cursor: pointer; background: none; border: none; }
+
+  /* Dims */
+  .dims { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+  .dim { background: rgba(58,155,111,0.08); border: 1px solid rgba(58,155,111,0.2); border-radius: 8px; padding: 16px; text-align: center; }
+  .dim .d-icon { font-size: 20px; margin-bottom: 6px; }
+  .dim .d-name { font-size: 13px; color: var(--white); margin-bottom: 4px; }
+  .dim .d-en { font-size: 10px; color: var(--muted); letter-spacing: 1px; }
+
+  footer { background: var(--deep); border-top: 1px solid rgba(58,155,111,0.2); padding: 32px 24px; text-align: center; }
+  footer .f-school { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  footer .f-cert { font-size: 11px; color: rgba(58,155,111,0.6); letter-spacing: 2px; }
+  .series-nav { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .series-nav a { font-size: 11px; letter-spacing: 1px; color: var(--muted); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; transition: all 0.2s; }
+  .series-nav a.current { border-color: var(--cohort); color: var(--cohort-light); }
+  .series-nav a:hover:not(.current) { border-color: rgba(255,255,255,0.3); color: var(--text); }
+
+  @media (max-width: 520px) {
+    .design-thinking { grid-template-columns: repeat(3, 1fr); }
+    .design-thinking .dt-step:nth-child(4),
+    .design-thinking .dt-step:nth-child(5) { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-logos">
+      <img src="../校徽(高清).png" alt="南华独中校徽">
+      <div class="logo-divider"></div>
+      <img src="../圖片_20260518172236_448_2.png" alt="南华学生领袖训练营">
+    </div>
+    <div class="school-tag">NAN HWA HIGH SCHOOL, MANJUNG</div>
+    <div class="cohort-badge">第三阶 · 使命篇</div>
+    <h1 class="hero-title">南华青年<span>领袖证书</span></h1>
+    <div class="hero-en">NANHWA YOUNG LEADERSHIP CERTIFICATE · 2025</div>
+    <div class="hero-date">2025年5月28日至30日 · 三天两夜</div>
+    <div class="hero-motto">「格局决定方向，温度决定距离。」</div>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="#about">营会简介</a>
+  <a href="#lectures">核心讲座</a>
+  <a href="#srcp">社会责任</a>
+  <a href="#programme">营会流程</a>
+  <a href="#milestone">历史意义</a>
+  <a href="#news">新闻报导</a>
+  <a href="#photos">营会照片</a>
+  <a href="#cert">证书认证</a>
+</nav>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="section-label">ABOUT THIS COHORT</div>
+  <h2 class="section-title">使命，从走出校园开始</h2>
+  <p>2025年，南华独中第三届学生领袖训练营迎来了最深刻的一次转型——领袖培育的边界，第一次从校园内延伸至社区。主题「<strong>格局×才德×温度</strong>」三维并举，是整个四届系列中概念密度最高的一届。</p>
+  <p>格局，是视野的高度；才德，是行动的根基；温度，是对人对社会的关怀与连结。三者缺一，皆不足以称为真正的领袖。</p>
+  <div class="significance">
+    <p>本届首次要求各学会在进营前提交「<strong>社会责任行动计划（SRCP）</strong>」初稿，确保每位营员带着真实社区议题进营——培育的起点，从此不再是空白的课堂，而是活生生的社区现实。</p>
+  </div>
+  <p>营会结束后，18个学会与8所华小正式对接，学生作为执行主体，将领袖素养真实转化为社区行动，形成南华领袖培育体系有史以来最具规模的对外辐射。</p>
+</section>
+
+<!-- Lectures -->
+<section class="section" id="lectures">
+  <div class="section-label">CORE LECTURES</div>
+  <h2 class="section-title">三场核心讲座</h2>
+
+  <div class="lecture-card">
+    <div class="lc-header">
+      <div class="lc-num">讲座一</div>
+      <div>
+        <div class="lc-title">《领袖素养：回馈社会与格局》</div>
+        <div class="lc-speaker">颜登逸董事长</div>
+      </div>
+    </div>
+    <div class="lc-body">
+      以「道法术器」四层次剖析领袖应在「道」层操作，不被术器困住视野。提出格局三功能：以终为始、聚焦精力、得道多助。以华人精神领袖陈嘉庚、林连玉为案例，展示真正的格局如何将个人才能转化为历史性的社会贡献。
+    </div>
+    <ul class="lc-points">
+      <li><strong>道法术器</strong>：有道无术，术尚可求；有术无道，止于术</li>
+      <li><strong>格局三功能</strong>：以终为始 · 聚焦精力 · 得道多助</li>
+      <li><strong>华人典范</strong>：陈嘉庚、林连玉——格局回馈社会的历史示范</li>
+    </ul>
+  </div>
+
+  <div class="lecture-card">
+    <div class="lc-header">
+      <div class="lc-num">讲座二</div>
+      <div>
+        <div class="lc-title">《才德兼备》— 荒岛生存情境模拟</div>
+        <div class="lc-speaker">陳麗冰校长博士</div>
+      </div>
+    </div>
+    <div class="lc-body">
+      本届才德兼备讲座进化为情境实验室。陳校长以「荒岛生存」团队任务与「资源掠夺道德测试」，让营员在压力下面对真实的内在抉择：是否偷取对手物资？是否牺牲受伤队员？是否接受贿赂裁判的优势？这些选择没有标准答案，却真实揭示了领袖在压力之下坚持什么、放弃什么。
+    </div>
+    <ul class="lc-points">
+      <li><strong>才与德的定义</strong>：才是解决问题的能力；德是你选择如何解决问题的初心</li>
+      <li><strong>牛根生四象限</strong>：有才无德是毒品；真正可用的人才，是品格撑得起才能的那一类</li>
+      <li><strong>努斯鲍姆能力理论</strong>：引入哈佛学者框架，分配名额情境——领导力的试金石不是如何对待掌声，而是如何安顿失落</li>
+      <li><strong>校长金句</strong>：「真正的领袖，是让别人安心跟随你，而不是畏惧你的能力。」</li>
+    </ul>
+  </div>
+
+  <div class="lecture-card">
+    <div class="lc-header">
+      <div class="lc-num">讲座三</div>
+      <div>
+        <div class="lc-title">《成为有温度的领袖》</div>
+        <div class="lc-speaker">何添胜董事总务</div>
+      </div>
+    </div>
+    <div class="lc-body">
+      何董事以「热忱、天赋、感恩」三重主题重新定义领袖的温度——那是影响力之外，能被信任、被长期跟随的内在磁场。
+    </div>
+    <ul class="lc-points">
+      <li><strong>热忱</strong>：坚持的内燃机；「热忱宣言」活动——我愿意为××坚持到底</li>
+      <li><strong>四种领导型天赋</strong>：行动型（执行力强）· 创意型（想法丰富）· 协调型（善解人意）· 分析型（理性审慎）</li>
+      <li><strong>感恩</strong>：连接团队、赢得信任的「关系润滑剂」；每周亲口向三位队员表达感谢</li>
+      <li><strong>30天领袖挑战计划</strong>：每天为团队付出一件小事，用不熟悉方式执行任务，建立正向文化</li>
+    </ul>
+  </div>
+
+  <div class="quote-block">
+    <blockquote>「领导力的旅程，从心出发；热忱点燃，天赋成型，感恩延续。」</blockquote>
+    <cite>— 何添胜董事总务</cite>
+  </div>
+
+  <div class="poem-block">
+    <div class="poem-title">《用生命影响生命》· 何添胜董事讲座结语</div>
+    <p>
+      把自己活成一束光，<br>
+      因为你不知道谁会借着你的光走出黑暗。<br>
+      请你保持心中的善良，<br>
+      因为你不知道谁会借着你的善良走出绝望。<br>
+      请你保持自己的信仰，<br>
+      因为你不知道谁会借着你的信仰走出迷茫。<br>
+      请相信自己的力量，<br>
+      因为你不知道谁会因为你的相信而相信自己。
+    </p>
+    <cite>— 引自泰戈尔</cite>
+  </div>
+</section>
+
+<!-- SRCP -->
+<section class="section" id="srcp">
+  <div class="section-label">SOCIAL RESPONSIBILITY ACTION PLAN</div>
+  <h2 class="section-title">社会责任行动计划（SRCP）</h2>
+  <p>使命篇最具历史意义的制度创新——领袖培育第一次走出校园，真实进入社区。</p>
+
+  <div class="srcp-box">
+    <h3>规模与成果</h3>
+    <div class="srcp-stats">
+      <div class="srcp-stat"><div class="s-num">18</div><div class="s-label">学会参与</div></div>
+      <div class="srcp-stat"><div class="s-num">8</div><div class="s-label">合作华小</div></div>
+      <div class="srcp-stat"><div class="s-num">2</div><div class="s-label">阶段：计划展示+对接会</div></div>
+    </div>
+
+    <h3>设计思维五环工作坊</h3>
+    <div class="design-thinking">
+      <div class="dt-step"><div class="dt-num">01</div><div class="dt-name">共情</div><div class="dt-desc">深入了解社区需要</div></div>
+      <div class="dt-step"><div class="dt-num">02</div><div class="dt-name">定义</div><div class="dt-desc">精准厘定问题</div></div>
+      <div class="dt-step"><div class="dt-num">03</div><div class="dt-name">创意</div><div class="dt-desc">头脑风暴可行方案</div></div>
+      <div class="dt-step"><div class="dt-num">04</div><div class="dt-name">原型</div><div class="dt-desc">快速制作可测试方案</div></div>
+      <div class="dt-step"><div class="dt-num">05</div><div class="dt-name">测试</div><div class="dt-desc">向校方及华小代表呈报</div></div>
+    </div>
+  </div>
+
+  <div class="significance">
+    <p>学生是执行主体，不是观摩者。部分计划在营内计划展示会当场获得认领，营后学生自主接待校长召开对接会，将计划落地为真实社区行动。</p>
+  </div>
+</section>
+
+<!-- Programme -->
+<section class="section" id="programme">
+  <div class="section-label">PROGRAMME</div>
+  <h2 class="section-title">营会结构</h2>
+  <p>使命篇在RPG框架基础上，将社会责任任务内嵌进营会流程，营前须完成SRCP初稿，营内深化，营后落地执行。</p>
+  <div class="flow">
+    <div class="flow-day">
+      <div class="flow-day-label">营前 · 带着真实议题进营</div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>SRCP初稿提交</strong> — 各学会须在进营前完成社会责任行动计划初稿，确保营员带着真实社区问题入营</div></div>
+    </div>
+    <div class="flow-day">
+      <div class="flow-day-label">DAY 1 · 格局与使命</div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>颜登逸董事长讲座</strong> — 领袖素养：回馈社会与格局，道法术器框架，陈嘉庚·林连玉华人典范</div></div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>SRCP引导工作坊</strong> — 设计思维五环，深化各学会计划草案</div></div>
+    </div>
+    <div class="flow-day">
+      <div class="flow-day-label">DAY 2 · 才德与温度</div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>陳麗冰校长讲座：才德兼备</strong> — 荒岛生存情境模拟，道德困境选择实验，努斯鲍姆能力理论</div></div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>何添胜董事讲座：成为有温度的领袖</strong> — 热忱·天赋·感恩·30天挑战</div></div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>团队活动与竞赛</strong> — RPG框架延续，考验协作与领导</div></div>
+    </div>
+    <div class="flow-day">
+      <div class="flow-day-label">DAY 3 · 社区行动发布</div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>SRCP计划展示会</strong> — 18学会呈报社会责任行动计划，向华小代表说明</div></div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>计划认领与对接</strong> — 部分计划当场获得认可，确立合作意向</div></div>
+      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>结业仪式</strong> — 三届系列第三章正式完结，使命交棒</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Milestone -->
+<section class="section" id="milestone">
+  <div class="section-label">HISTORICAL SIGNIFICANCE</div>
+  <h2 class="section-title">历史意义</h2>
+  <div class="milestones">
+    <div class="milestone"><div class="num">首创</div><div class="label">营前SRCP提交制度</div></div>
+    <div class="milestone"><div class="num">18</div><div class="label">学会走进社区</div></div>
+    <div class="milestone"><div class="num">8</div><div class="label">华小建立合作</div></div>
+    <div class="milestone"><div class="num">首次</div><div class="label">引入哈佛学者理论框架</div></div>
+  </div>
+
+  <div class="quote-block" style="margin-top:32px;">
+    <blockquote>「德是否配位，决定灾殃是否随行。真正的领袖，是让别人安心跟随你，而不是畏惧你的能力。」</blockquote>
+    <cite>— 陳麗冰校长</cite>
+  </div>
+
+  <p>使命篇是四届系列的转折点。前两届建构了内在框架（才德+勤奋），第三届将这个框架向外打开——领袖的使命不止于个人成长，而在于以自身的温度点燃社区。18学会对接8所华小，是这届训练营留给南华的最具体礼物。</p>
+</section>
+
+<!-- News -->
+<section class="section" id="news">
+  <div class="section-label">PRESS COVERAGE</div>
+  <h2 class="section-title">新闻报导</h2>
+  <p>本届训练营分三篇系列报导，完整记录三场核心讲座。</p>
+  <div class="fb-wrap">
+    <!-- 报导一：董事长（待更新链接） -->
+    <div class="fb-post"
+      data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0XDAzXtfQGC59eEn1unNZHYr3YJFVgtafcL8yTnChkeQyQLNW2waU4LKYWBjERjAzl"
+      data-width="500"
+      data-show-text="true">
+    </div>
+    <!-- 报导二：校长 才德兼备 -->
+    <div class="fb-post"
+      data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0gSJUqjDyS3kCxPxXFBzyvbAqVw9YsHEKDiAaVjrai9mexC5nLGwcyFfYggDvnDUfl"
+      data-width="500"
+      data-show-text="true">
+    </div>
+    <!-- 报导三：何添胜 有温度的领袖 -->
+    <div class="fb-post"
+      data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0EiPBnKRtpGkgF1j54TnzvTcQSVbSdmiwy7gv5bPr2FrZeWdvuYbeu2jsQ1B4Vdsyl"
+      data-width="500"
+      data-show-text="true">
+    </div>
+  </div>
+</section>
+
+<!-- Photos -->
+<section class="photo-section" id="photos">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
+    <div class="section-label">GALLERY</div>
+    <h2 class="section-title" style="margin-bottom:32px;">营会照片</h2>
+  </div>
+  <div class="photo-track-wrap">
+    <div class="photo-track" id="photoTrack2025">
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cert -->
+<section class="section" id="cert">
+  <div class="section-label">CERTIFICATION</div>
+  <h2 class="section-title">南华青年领袖证书 · 五维认证</h2>
+  <p>《南华青年领袖证书》（NanHwa Young Leadership Certificate）依据五维评量标准颁发。</p>
+  <div class="dims">
+    <div class="dim"><div class="d-icon">◈</div><div class="d-name">领导意识</div><div class="d-en">Leadership Awareness</div></div>
+    <div class="dim"><div class="d-icon">◈</div><div class="d-name">团队协作</div><div class="d-en">Teamwork</div></div>
+    <div class="dim"><div class="d-icon">◈</div><div class="d-name">创新能力</div><div class="d-en">Innovation</div></div>
+    <div class="dim"><div class="d-icon">◈</div><div class="d-name">社会责任</div><div class="d-en">Social Responsibility</div></div>
+    <div class="dim"><div class="d-icon">◈</div><div class="d-name">文化自信</div><div class="d-en">Cultural Confidence</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-school">Nan Hwa High School, Manjung · 曼绒南华独中</div>
+  <div class="f-cert">NANHWA YOUNG LEADERSHIP CERTIFICATE · DIGITAL AUTHENTICATION</div>
+  <div class="series-nav">
+    <a href="../2023/">2023 启航篇</a>
+    <a href="../2024/">2024 成长篇</a>
+    <a href="#" class="current">2025 使命篇</a>
+    <a href="../2026/">2026 承光篇</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  const track = document.getElementById('photoTrack2025');
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+  track.addEventListener('mouseleave', () => { isDown = false; });
+  track.addEventListener('mouseup', () => { isDown = false; });
+  track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.5; });
+
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    if (!img) return;
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox(e) {
+    if (!e || e.target !== document.getElementById('lightbox').querySelector('img'))
+      document.getElementById('lightbox').classList.remove('active');
+  }
+</script>
+</body>
+</html>
