@@ -177,6 +177,16 @@
   .speaker-card .name { font-size: 16px; color: var(--white); margin-bottom: 8px; }
   .speaker-card .topic { font-size: 12px; color: var(--cohort-light); margin-bottom: 8px; font-style: italic; }
   .speaker-card .desc { font-size: 13px; color: rgba(240,234,214,0.7); line-height: 1.6; }
+  .speaker-avatar {
+    width: 76px; height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid rgba(123,94,167,0.5);
+    margin-bottom: 14px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
 
   /* ── Programme flow ── */
   .flow { margin-top: 24px; }
@@ -307,6 +317,64 @@
   .dim .d-name { font-size: 13px; color: var(--white); margin-bottom: 4px; }
   .dim .d-en { font-size: 10px; color: var(--muted); letter-spacing: 1px; }
 
+  /* ── Programme Timeline ── */
+  .timeline { margin-top: 32px; }
+  .timeline-day { margin-bottom: 48px; }
+  .timeline-day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 14px 20px;
+    background: var(--cohort-dim);
+    border-left: 4px solid var(--cohort);
+    border-radius: 0 8px 8px 0;
+  }
+  .timeline-day-num { font-size: 10px; letter-spacing: 3px; color: var(--cohort-light); margin-bottom: 4px; }
+  .timeline-day-title { font-size: 16px; color: var(--white); font-weight: normal; }
+  .timeline-item { display: flex; gap: 0; margin-bottom: 2px; }
+  .timeline-time {
+    width: 76px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--muted);
+    padding-top: 13px;
+    text-align: right;
+    padding-right: 14px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+  }
+  .timeline-connector { width: 28px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; }
+  .timeline-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--cohort);
+    margin-top: 15px;
+    flex-shrink: 0;
+  }
+  .timeline-dot.lecture { background: var(--cohort-light); width: 11px; height: 11px; margin-top: 14px; }
+  .timeline-dot.activity { background: rgba(168,155,122,0.6); }
+  .timeline-dot.ceremony { background: var(--gold); width: 13px; height: 13px; margin-top: 13px; box-shadow: 0 0 6px rgba(200,151,58,0.5); }
+  .timeline-line { width: 1px; background: rgba(123,94,167,0.18); flex: 1; margin-top: 3px; }
+  .timeline-content { flex: 1; padding: 8px 0 12px 0; }
+  .timeline-item-title { font-size: 14px; color: rgba(240,234,214,0.85); line-height: 1.5; }
+  .timeline-item-title strong { color: var(--white); }
+  .timeline-item-sub { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+  .tl-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 2px 7px;
+    border-radius: 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  .tag-lecture { background: rgba(123,94,167,0.2); color: var(--cohort-light); }
+  .tag-activity { background: rgba(168,155,122,0.12); color: var(--muted); }
+  .tag-highlight { background: rgba(200,151,58,0.18); color: var(--gold); }
+
   /* ── Footer ── */
   footer {
     background: var(--deep);
@@ -408,24 +476,28 @@
   <h2 class="section-title">讲师阵容</h2>
   <div class="speakers">
     <div class="speaker-card">
+      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1r9O97qua1lL1JZD5MNSvtBWg2zYulEar" alt="颜登逸">
       <div class="role">董事长</div>
       <div class="name">颜登逸</div>
       <div class="topic">《大局观》</div>
       <div class="desc">以开阔思维透彻全局，超越个人利益制定长远规划，提出领袖三层次：领导、领袖、精神领袖。</div>
     </div>
     <div class="speaker-card">
+      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1bCcfZv5UNJ7hues_1NDbbp7SAg86ZAvL" alt="何添胜">
       <div class="role">董事总务</div>
       <div class="name">何添胜</div>
       <div class="topic">《领袖之才与德》</div>
       <div class="desc">解析牛根生四象限：有德有才、有德无才、无德有才、无德无才，才德比喻为树叶与树根。</div>
     </div>
     <div class="speaker-card">
+      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1CuwtBZpYGhswc4uQJOVF-14e45bfVDYo" alt="陳麗冰博士">
       <div class="role">校长</div>
       <div class="name">陳麗冰博士</div>
       <div class="topic">《才德兼备》</div>
       <div class="desc">「真正的领袖，是让别人安心跟随你，而不是畏惧你的能力。」以IWS量表双维度深化内化。</div>
     </div>
     <div class="speaker-card">
+      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1tHkXKnnXIeK5V1udSV613S3EFDYpuXQE" alt="俞思佳">
       <div class="role">校友</div>
       <div class="name">俞思佳</div>
       <div class="topic">《法律与领袖》</div>
@@ -437,27 +509,174 @@
 <!-- Programme -->
 <section class="section" id="programme">
   <div class="section-label">PROGRAMME</div>
-  <h2 class="section-title">营会结构</h2>
-  <p>本届营会采用「理论建构→实践竞争→整合模拟决策」三段式结构，层层递进，确保每一项理论都经过实践检验。</p>
-  <div class="flow">
-    <div class="flow-day">
-      <div class="flow-day-label">DAY 1 · 才德与格局</div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>破冰与编队</strong> — 营员互识，建立团队归属感</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>颜登逸董事长讲座：大局观</strong> — 开营核心讲座，奠定思维框架</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>陳麗冰校长讲座：才德兼备</strong> — 价值坐标建立</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>何添胜董事讲座：领袖之才与德</strong> — 四象限实践分析</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>俞思佳校友讲座：法律条规</strong> — 责任边界认知</div></div>
+  <h2 class="section-title">营会流程</h2>
+  <p>三天两夜，理论建构 → 实践竞争 → 整合模拟决策，层层递进。每一项理论都经过实践检验。</p>
+  <div class="timeline">
+
+    <!-- Day 1 -->
+    <div class="timeline-day">
+      <div class="timeline-day-header">
+        <div>
+          <div class="timeline-day-num">DAY 1 · 才德与格局</div>
+          <div class="timeline-day-title">4月20日（星期四）</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">09:00</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">破冰游戏<span class="tl-tag tag-activity">团建</span></div>
+          <div class="timeline-item-sub">下雨 · 大风吹 · 盲人摸号 — 营员互识，建立团队归属感</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">09:45</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>陳麗冰校长</strong> · 致辞与介绍<span class="tl-tag tag-lecture">讲座</span></div>
+          <div class="timeline-item-sub">才德兼备框架揭幕，IWS双维度领袖评量</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:15</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>吴明月董事</strong> · 让感恩成为习惯<span class="tl-tag tag-lecture">讲座</span></div>
+          <div class="timeline-item-sub">爱要大声说出来</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:45</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>俞思佳</strong> · 会议规范<span class="tl-tag tag-lecture">讲座</span></div>
+          <div class="timeline-item-sub">法律视角下的领袖责任边界</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">13:00</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>颜登逸董事长</strong> · 大局观<span class="tl-tag tag-highlight">核心讲座</span></div>
+          <div class="timeline-item-sub">以开阔思维透彻全局，超越个人利益制定长远规划 · 2 小时深度</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">团康游戏<span class="tl-tag tag-activity">团建</span></div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">16:00</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>何添胜总务</strong> · 领袖之才与德<span class="tl-tag tag-highlight">核心讲座</span></div>
+          <div class="timeline-item-sub">牛根生四象限 — 才比树叶，德比树根 · 1.5 小时</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">18:30</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">蒙眼闯关<span class="tl-tag tag-activity">体验活动</span></div>
+          <div class="timeline-item-sub">董事们带队，体验信任与领导的具身关系</div>
+        </div>
+      </div>
     </div>
-    <div class="flow-day">
-      <div class="flow-day-label">DAY 2 · 竞争与实践</div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>弱肉强食</strong> — 高张力团队竞争活动，测试营员在压力下的决策与合作</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>口才训练</strong> — 即席演讲、论辩，锻炼表达与逻辑</div></div>
+
+    <!-- Day 2 -->
+    <div class="timeline-day">
+      <div class="timeline-day-header">
+        <div>
+          <div class="timeline-day-num">DAY 2 · 竞争与实践</div>
+          <div class="timeline-day-title">4月21日（星期五）</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">07:30</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">体魄训练<span class="tl-tag tag-activity">体能</span></div>
+          <div class="timeline-item-sub">万顺华、黄冠铭带队</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:00</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>俞思佳</strong> · 法律条规<span class="tl-tag tag-lecture">讲座</span></div>
+          <div class="timeline-item-sub">领袖责任的法律边界认知</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:00</div>
+        <div class="timeline-connector"><div class="timeline-dot lecture"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>陳麗冰校长</strong> · 口才训练<span class="tl-tag tag-lecture">讲座</span></div>
+          <div class="timeline-item-sub">即席演讲、论辩，锻炼表达与逻辑</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00</div>
+        <div class="timeline-connector"><div class="timeline-dot ceremony"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">弱肉强食<span class="tl-tag tag-highlight">压轴活动</span></div>
+          <div class="timeline-item-sub">高张力团队竞争，3.5 小时测试营员在压力下的决策与合作 · 赖静绣、林欣宜、李淑桦设计</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">16:30</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">各队小组会议<span class="tl-tag tag-activity">备战</span></div>
+          <div class="timeline-item-sub">天使投资人提案准备 — 分赴 AI 室、Arduino 室、电脑室</div>
+        </div>
+      </div>
     </div>
-    <div class="flow-day">
-      <div class="flow-day-label">DAY 3 · 整合与承诺</div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>天使投资人压轴</strong> — 各团队呈现提案，模拟真实决策场景，学校承诺兑现三项最优提案</div></div>
-      <div class="flow-item"><div class="flow-dot"></div><div class="flow-text"><strong>学生领袖会就职仪式</strong> — 第一届南华学生领袖会正式成立，颁发委任状</div></div>
+
+    <!-- Day 3 -->
+    <div class="timeline-day">
+      <div class="timeline-day-header">
+        <div>
+          <div class="timeline-day-num">DAY 3 · 整合与承诺</div>
+          <div class="timeline-day-title">4月22日（星期六）</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">07:30</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">体魄训练<span class="tl-tag tag-activity">体能</span></div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:00</div>
+        <div class="timeline-connector"><div class="timeline-dot activity"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title">各队小组会议<span class="tl-tag tag-activity">备战</span></div>
+          <div class="timeline-item-sub">提案最终打磨 · 2 小时</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">13:00</div>
+        <div class="timeline-connector"><div class="timeline-dot ceremony"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>天使投资人</strong><span class="tl-tag tag-highlight">压轴</span></div>
+          <div class="timeline-item-sub">各团队呈现提案，董事们现场评审，校方承诺兑现三项最优提案</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-connector"><div class="timeline-dot ceremony"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-item-title"><strong>颁奖典礼 · 学生领袖会就职仪式</strong><span class="tl-tag tag-highlight">历史时刻</span></div>
+          <div class="timeline-item-sub">第一届南华学生领袖会正式成立 — 会长张诗静率营员庄严宣誓，接受委任书与领袖徽章</div>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -513,14 +732,22 @@
     <div class="section-label">GALLERY</div>
     <h2 class="section-title">营会照片</h2>
   </div>
-  <div style="max-width:960px;margin:0 auto;padding:0 24px;">
-    <iframe
-      src="https://drive.google.com/embeddedfolderview?id=1bdsiH3nIBqtkNlFWZGaxBUQoTMoWt5Bx#grid"
-      style="width:100%;height:600px;border:0;border-radius:12px;background:#111;"
-      allowfullscreen
-      loading="lazy">
-    </iframe>
-  </div>
+  <div class="photo-track-wrap">
+    <div class="photo-track" id="photoTrack2023">
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1F123KbXYMSR4BC-Zto4yy0TY00rCx-bk" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1towqNd7FMiCQu1mIGxNqpZHbuZcZLNhY" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1jcSpemy0aqNcVk_OfnrfvFqPFdZkL4e1" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1mGnpRbli5eqQ2FzH78O4d2rjJEMtYj7s" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1bnrfiVv_YN7a4d_wgWiuokgnNAjoA-ZB" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1lEmn_hDshIm2vAMmqNL8L8GCfzBTgQsw" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1t6kJ_w1U5KX7aYt5MHM04_EIqhyv9WCR" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1xL3Gs_6Q560Zwlv6uPVT5vIOqsungK_Y" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1exHdZVc6ECOjOSG66XQC8arKG-H1EslA" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=12wprwE0nVS2zkIUfaotrP9coH9in3t6D" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1Zqz6Lms90Wpf6uRZNoZl0nscQE89b01-" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1B-Ji-z2OqoBC_-Q3PAtUOBuOHF7YOq5d" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=15T_XWHe05E9cXbANoVC4COn6YDMUBHLA" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=19-MqYuW47Ft96qvnA2jWsLXPLtGph9oy" alt="营会照片" loading="lazy"></div>
     </div>
   </div>
 </section>
