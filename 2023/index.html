@@ -8,15 +8,15 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v18.0"></script>
 <style>
   :root {
-    --main: #1A1A2E;
-    --deep: #16213E;
-    --accent: #0F3460;
-    --cohort: #7B5EA7;
-    --cohort-light: #A07EC8;
-    --cohort-dim: rgba(123,94,167,0.15);
-    --gold: #C8973A;
-    --text: #F0EAD6;
-    --muted: #A89B7A;
+    --main: #0D2B24;
+    --deep: #091F1A;
+    --accent: #1A6B52;
+    --cohort: #2BAE8E;
+    --cohort-light: #7DD4C0;
+    --cohort-dim: rgba(43,174,142,0.15);
+    --gold: #C9A84C;
+    --text: #EDF6F3;
+    --muted: #8ABFB0;
     --white: #ffffff;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +30,7 @@
 
   /* ── Hero ── */
   .hero {
-    background: linear-gradient(160deg, var(--deep) 0%, var(--accent) 60%, #2D1B4E 100%);
+    background: linear-gradient(160deg, var(--deep) 0%, var(--accent) 60%, #0A3328 100%);
     border-bottom: 3px solid var(--cohort);
     padding: 60px 24px 48px;
     text-align: center;
@@ -166,7 +166,58 @@
   .significance p { margin: 0; color: var(--text); }
 
   /* ── Speakers ── */
-  .speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
+  /* ── Speaker Relay Band ── */
+  .spk-band {
+    background: linear-gradient(160deg, rgba(26,107,82,0.18) 0%, rgba(9,31,26,0.55) 100%);
+    border-top: 1px solid rgba(43,174,142,0.12);
+    border-bottom: 1px solid rgba(43,174,142,0.12);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .spk-band.visible { opacity: 1; transform: translateY(0); }
+  .spk-interlude {
+    display: flex; align-items: center; gap: 48px;
+    padding: 52px max(24px, 6vw);
+    max-width: 860px; margin: 0 auto;
+  }
+  .spk-interlude.reverse { flex-direction: row-reverse; }
+  .spk-portrait {
+    flex-shrink: 0;
+    width: 160px; height: 200px;
+    object-fit: cover; object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    border: 1px solid rgba(43,174,142,0.3);
+  }
+  .spk-text { flex: 1; }
+  .spk-num {
+    font-size: 64px; font-family: 'Georgia',serif;
+    color: rgba(43,174,142,0.1); line-height: 1;
+    margin-bottom: -8px; font-weight: bold;
+  }
+  .spk-role { font-size: 10px; letter-spacing: 4px; color: var(--cohort); text-transform: uppercase; margin-bottom: 8px; }
+  .spk-name {
+    font-size: clamp(26px, 4.5vw, 38px);
+    color: var(--white); font-family: 'STSong','SimSun','Georgia',serif;
+    margin-bottom: 8px; line-height: 1.2;
+  }
+  .spk-topic { font-size: 15px; color: var(--gold); font-style: italic; margin-bottom: 14px; }
+  .spk-lines { list-style: none; padding: 0; }
+  .spk-lines li {
+    font-size: 13px; color: rgba(237,246,243,0.58);
+    padding: 3px 0 3px 16px; position: relative; line-height: 1.6;
+  }
+  .spk-lines li::before { content: '—'; position: absolute; left: 0; color: var(--cohort); }
+  @media (max-width: 600px) {
+    .spk-interlude, .spk-interlude.reverse { flex-direction: column; gap: 24px; }
+    .spk-portrait { width: 120px; height: 150px; }
+    .spk-num { font-size: 44px; }
+  }
+
+  /* ── 旧 speaker-card（隐藏） ── */
+  .speakers { display: none; }
   .speaker-card {
     background: rgba(123,94,167,0.08);
     border: 1px solid rgba(123,94,167,0.25);
@@ -415,8 +466,19 @@
     flex: 1 1 300px;
     min-width: 0;
   }
-    .hero-cover { width: 100%; max-height: 480px; overflow: hidden; }
-    .hero-cover img { width: 100%; height: 580px; object-fit: cover; object-position: center top; display: block; will-change: transform; }
+    .hero-cover { width: 100%; max-height: 480px; overflow: hidden; position: relative; }
+    .hero-cover img { width: 100%; height: 580px; object-fit: cover; object-position: center 30%; display: block; will-change: transform; }
+    .hero-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(9,31,26,0.7) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 600px) {
+      .hero-cover { max-height: 260px; }
+      .hero-cover img { height: 320px; object-position: center center; }
+    }
 
   /* ══ MOTION DESIGN ══ */
 
@@ -546,9 +608,263 @@
     color: var(--cohort-light) !important;
     border-bottom-color: var(--cohort) !important;
   }
+
+  /* ══ SECTION GRADIENT TRANSITIONS ══ */
+  section, .fb-section {
+    position: relative;
+  }
+  section::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--main));
+    pointer-events: none;
+    z-index: 1;
+  }
+  .section-inner { position: relative; z-index: 2; }
+
+  /* Glass card treatment */
+  .speaker-card, .cohort-card {
+    background: rgba(13,43,36,0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(43,174,142,0.18) !important;
+  }
+  .stat-box {
+    background: rgba(26,107,82,0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(43,174,142,0.2);
+  }
+
+  /* Diagonal teal sweep between major sections */
+  .section-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-sweep::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -20%; right: -20%;
+    height: 120px;
+    background: linear-gradient(160deg, rgba(43,174,142,0.06) 0%, rgba(43,174,142,0.02) 100%);
+    transform: rotate(-2deg);
+    pointer-events: none;
+  }
+
+  /* ══ ENHANCED REVEAL ANIMATIONS ══ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+                transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+                transform 0.75s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+  /* ══ SPLASH SCREEN ══ */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: linear-gradient(160deg, #091F1A 0%, #0D2B24 55%, #0A3328 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.9s cubic-bezier(0.76,0,0.24,1),
+                opacity 0.3s ease;
+  }
+  #splash.exit {
+    transform: translateY(-100%);
+  }
+  /* Diagonal decorative lines */
+  #splash::before, #splash::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(43,174,142,0.1), transparent);
+    pointer-events: none;
+  }
+  #splash::before { top: 28%; transform: rotate(-12deg); }
+  #splash::after  { top: 68%; transform: rotate(-12deg); }
+
+  .splash-cert {
+    position: relative;
+    width: min(340px, 82vw);
+    background: linear-gradient(145deg, #f9f5ea 0%, #fffdf5 45%, #f1ede0 100%);
+    border-radius: 3px;
+    padding: 36px 28px 44px;
+    text-align: center;
+    box-shadow:
+      0 32px 100px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(201,168,76,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+    animation: certFloat 3.5s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+  /* Inner gold frame */
+  .splash-cert::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(201,168,76,0.45);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+  .cert-corner {
+    position: absolute;
+    font-size: 9px;
+    color: rgba(201,168,76,0.7);
+    line-height: 1;
+  }
+  .cert-corner.tl { top: 5px; left: 9px; }
+  .cert-corner.tr { top: 5px; right: 9px; }
+  .cert-corner.bl { bottom: 5px; left: 9px; }
+  .cert-corner.br { bottom: 5px; right: 9px; }
+
+  .splash-school-logo {
+    width: 56px; height: 56px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  }
+  .splash-cert-en {
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #7aaa9a;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .splash-cert-main {
+    font-size: 22px;
+    color: #1a3d35;
+    font-family: 'STSong','SimSun','Georgia',serif;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .splash-cert-year {
+    font-size: 34px;
+    font-weight: bold;
+    color: #C9A84C;
+    font-family: 'Georgia',serif;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 3px rgba(201,168,76,0.3);
+    margin-bottom: 4px;
+  }
+  .splash-cert-sub {
+    font-size: 12px;
+    color: #7aaa9a;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+  .cert-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6), transparent);
+    margin: 0 auto 20px;
+  }
+  .splash-seal {
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at 40% 35%, #e84040 0%, #C0392B 50%, #8B1A1A 100%);
+    border-radius: 50%;
+    margin: 0 auto 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.92);
+    font-size: 9px;
+    font-family: 'STSong','SimSun',serif;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow:
+      0 0 0 3px rgba(192,57,43,0.35),
+      0 0 0 7px rgba(192,57,43,0.12),
+      0 6px 20px rgba(0,0,0,0.3);
+    animation: sealPulse 2.8s ease-in-out infinite;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease;
+  }
+  .splash-hint {
+    margin-top: 32px;
+    color: rgba(125,212,192,0.75);
+    font-size: 12px;
+    letter-spacing: 4px;
+    animation: hintBob 2s ease-in-out infinite;
+    font-family: 'Georgia',serif;
+  }
+  .splash-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(43,174,142,0.2);
+    transform: scale(0);
+    animation: rippleOut 0.8s ease-out forwards;
+    pointer-events: none;
+    width: 60px; height: 60px;
+    margin-left: -30px; margin-top: -30px;
+  }
+  /* Exit state */
+  #splash.exit .splash-seal {
+    transform: scale(1.4) rotate(20deg);
+    opacity: 0;
+  }
+  #splash.exit .splash-cert {
+    transform: scale(0.88) translateY(16px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.76,0,0.24,1),
+                opacity 0.35s ease;
+  }
+
+  @keyframes certFloat {
+    0%,100% { transform: translateY(0) rotate(-0.8deg); box-shadow: 0 32px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.35), inset 0 1px 0 rgba(255,255,255,0.8); }
+    50%      { transform: translateY(-10px) rotate(0.4deg); box-shadow: 0 48px 120px rgba(0,0,0,0.65), 0 0 0 1px rgba(201,168,76,0.45), inset 0 1px 0 rgba(255,255,255,0.8); }
+  }
+  @keyframes sealPulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(192,57,43,0.35), 0 0 0 7px rgba(192,57,43,0.12), 0 6px 20px rgba(0,0,0,0.3); }
+    50%     { box-shadow: 0 0 0 5px rgba(192,57,43,0.45), 0 0 0 12px rgba(192,57,43,0.18), 0 6px 20px rgba(0,0,0,0.3); }
+  }
+  @keyframes hintBob {
+    0%,100% { opacity: 0.75; transform: translateY(0); }
+    50%     { opacity: 1;    transform: translateY(5px); }
+  }
+  @keyframes rippleOut {
+    to { transform: scale(10); opacity: 0; }
+  }
+
   </style>
 </head>
 <body>
+
+<!-- Splash Screen -->
+<div id="splash" role="button" aria-label="点击进入">
+  <div class="splash-cert">
+    <span class="cert-corner tl">◆</span>
+    <span class="cert-corner tr">◆</span>
+    <span class="cert-corner bl">◆</span>
+    <span class="cert-corner br">◆</span>
+    <img src="../school-crest.png" alt="南华独中校徽" class="splash-school-logo" onerror="this.style.display='none'">
+    <div class="splash-cert-en">NAN HWA HIGH SCHOOL</div>
+    <div class="splash-cert-main">南华青年领袖培训营</div>
+    <div class="splash-cert-year">2023</div>
+    <div class="splash-cert-sub">第一阶 · 启航篇</div>
+    <div class="cert-divider"></div>
+    <div class="splash-seal">南华<br>认证</div>
+  </div>
+  <div class="splash-hint">▽ &nbsp; 触碰以开启 &nbsp; ▽</div>
+</div>
 
 <!-- Hero -->
 <header class="hero">
@@ -600,17 +916,53 @@
   </div>
 </section>
 
-<!-- Speakers -->
-<section class="section" id="speakers">
-  <div class="section-label">SPEAKERS</div>
-  <h2 class="section-title">讲师阵容</h2>
-  <div class="speakers">
+<!-- Speaker 1 -->
+<div class="spk-band" id="speakers">
+  <div class="spk-interlude">
+    <img class="spk-portrait" src="speakers/speaker-01-yan.jpg" alt="颜登逸">
+    <div class="spk-text">
+      <div class="spk-num">01</div>
+      <div class="spk-role">董事长</div>
+      <div class="spk-name">颜登逸</div>
+      <div class="spk-topic">《大局观》</div>
+      <ul class="spk-lines">
+        <li>领袖分三层次：领导 · 领袖 · 精神领袖</li>
+        <li>超越个人，方能谋定长远</li>
+      </ul>
+    </div>
+  </div>
+  <!-- OLD speakers hidden -->
+  <div style="display:none">
+    <div class="spk-row from-left">
+      <div class="spk-photo-wrap">
+        <img class="spk-photo" src="speakers/speaker-01-yan.jpg" alt="颜登逸">
+      </div>
+      <div class="spk-info">
+        <div class="spk-role">董事长</div>
+        <div class="spk-name">颜登逸</div>
+        <div class="spk-topic">《大局观》</div>
+        <div class="spk-quote">领袖·领导·精神领袖<br>三个层次，一生追求</div>
+      </div>
+    </div>
+  <!-- OLD speakers hidden below -->
+  <div class="speakers" style="display:none">
     <div class="speaker-card">
       <img class="speaker-avatar" src="speakers/speaker-01-yan.jpg" alt="颜登逸">
       <div class="role">董事长</div>
       <div class="name">颜登逸</div>
       <div class="topic">《大局观》</div>
       <div class="desc">以开阔思维透彻全局，超越个人利益制定长远规划，提出领袖三层次：领导、领袖、精神领袖。</div>
+    </div>
+    <div class="spk-row from-right">
+      <div class="spk-photo-wrap">
+        <img class="spk-photo" src="speakers/speaker-02-he.jpg" alt="何添胜">
+      </div>
+      <div class="spk-info">
+        <div class="spk-role">董事总务</div>
+        <div class="spk-name">何添胜</div>
+        <div class="spk-topic">《领袖之才与德》</div>
+        <div class="spk-quote">才如树叶，德如树根<br>根深，才能叶茂</div>
+      </div>
     </div>
     <div class="speaker-card">
       <img class="speaker-avatar" src="speakers/speaker-02-he.jpg" alt="何添胜">
@@ -619,6 +971,17 @@
       <div class="topic">《领袖之才与德》</div>
       <div class="desc">解析牛根生四象限：有德有才、有德无才、无德有才、无德无才，才德比喻为树叶与树根。</div>
     </div>
+    <div class="spk-row from-left">
+      <div class="spk-photo-wrap">
+        <img class="spk-photo" src="speakers/speaker-03-chen.jpg" alt="陳麗冰博士">
+      </div>
+      <div class="spk-info">
+        <div class="spk-role">校长</div>
+        <div class="spk-name">陳麗冰博士</div>
+        <div class="spk-topic">《才德兼备》</div>
+        <div class="spk-quote">真正的领袖<br>让人安心跟随，而非畏惧</div>
+      </div>
+    </div>
     <div class="speaker-card">
       <img class="speaker-avatar" src="speakers/speaker-03-chen.jpg" alt="陳麗冰博士">
       <div class="role">校长</div>
@@ -626,6 +989,19 @@
       <div class="topic">《才德兼备》</div>
       <div class="desc">「真正的领袖，是让别人安心跟随你，而不是畏惧你的能力。」以IWS量表双维度深化内化。</div>
     </div>
+    <div class="spk-row from-right">
+      <div class="spk-photo-wrap">
+        <img class="spk-photo" src="speakers/speaker-04-yu.jpg" alt="俞思佳">
+      </div>
+      <div class="spk-info">
+        <div class="spk-role">校友 · 律师</div>
+        <div class="spk-name">俞思佳</div>
+        <div class="spk-topic">《法律与领袖》</div>
+        <div class="spk-quote">权力有边界<br>责任无尽头</div>
+      </div>
+    </div>
+  </div><!-- /speaker-stage -->
+
     <div class="speaker-card">
       <img class="speaker-avatar" src="speakers/speaker-04-yu.jpg" alt="俞思佳">
       <div class="role">校友</div>
@@ -634,7 +1010,8 @@
       <div class="desc">从法律视角审视领袖责任边界，帮助营员建立责任意识，理解领导力的社会维度。</div>
     </div>
   </div>
-</section>
+  </div><!-- /hidden old speakers -->
+</div><!-- /spk-band speaker 1 -->
 
 <!-- Programme -->
 <section class="section" id="programme">
@@ -810,6 +1187,23 @@
   </div>
 </section>
 
+<!-- Speaker 2 -->
+<div class="spk-band">
+  <div class="spk-interlude reverse">
+    <img class="spk-portrait" src="speakers/speaker-02-he.jpg" alt="何添胜">
+    <div class="spk-text">
+      <div class="spk-num">02</div>
+      <div class="spk-role">董事总务</div>
+      <div class="spk-name">何添胜</div>
+      <div class="spk-topic">《领袖之才与德》</div>
+      <ul class="spk-lines">
+        <li>才如树叶，德如树根</li>
+        <li>有德有才，方为领袖首选</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- Milestone -->
 <section class="section" id="milestone">
   <div class="section-label">HISTORICAL SIGNIFICANCE</div>
@@ -856,6 +1250,23 @@
   <p style="font-size:13px;color:var(--muted);margin-top:24px;">就职仪式与会嘉宾：董事长颜登逸先生、副董事长拿督叶绍利、董事总务何添胜先生、副总务林道祥董事、校长陳麗冰博士、家长教师联合会主席叶燕妮女士、校董会理事陳惠芝女士。</p>
 </section>
 
+<!-- Speaker 3 -->
+<div class="spk-band">
+  <div class="spk-interlude">
+    <img class="spk-portrait" src="speakers/speaker-03-chen.jpg" alt="陳麗冰博士">
+    <div class="spk-text">
+      <div class="spk-num">03</div>
+      <div class="spk-role">校长</div>
+      <div class="spk-name">陳麗冰博士</div>
+      <div class="spk-topic">《才德兼备》</div>
+      <ul class="spk-lines">
+        <li>真正的领袖，让人安心跟随</li>
+        <li>而非畏惧你的能力</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- Photos -->
 <section class="photo-section" id="photos">
   <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
@@ -895,6 +1306,23 @@
     </div>
   </div>
 </section>
+
+<!-- Speaker 4 -->
+<div class="spk-band">
+  <div class="spk-interlude reverse">
+    <img class="spk-portrait" src="speakers/speaker-04-yu.jpg" alt="俞思佳">
+    <div class="spk-text">
+      <div class="spk-num">04</div>
+      <div class="spk-role">校友 · 律师</div>
+      <div class="spk-name">俞思佳</div>
+      <div class="spk-topic">《法律与领袖》</div>
+      <ul class="spk-lines">
+        <li>权力有边界</li>
+        <li>责任，无尽头</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- Cert -->
 <section class="section" id="cert">
@@ -1010,11 +1438,16 @@
   });
 
   // Speaker cards — stagger
-  document.querySelectorAll('.speaker-card').forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.setProperty('--d', `${i * 90}ms`);
-    revealObs.observe(el);
-  });
+  /* Speaker relay bands — each triggers individually on scroll */
+  const spkObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        spkObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.spk-band').forEach(el => spkObs.observe(el));
 
   // Milestone cards — stagger
   document.querySelectorAll('.milestone').forEach((el, i) => {
@@ -1101,6 +1534,31 @@
     });
   }, { threshold: 0.35 });
   sections.forEach(s => navObs.observe(s));
+
+  /* ── Splash ── */
+  (function() {
+    const splash = document.getElementById('splash');
+    if (!splash) return;
+    document.body.style.overflow = 'hidden';
+
+    function openSite(e) {
+      const ripple = document.createElement('div');
+      ripple.className = 'splash-ripple';
+      const x = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : window.innerWidth/2);
+      const y = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : window.innerHeight/2);
+      ripple.style.left = x + 'px';
+      ripple.style.top  = y + 'px';
+      splash.appendChild(ripple);
+      setTimeout(function() {
+        splash.classList.add('exit');
+        document.body.style.overflow = '';
+        setTimeout(function() { splash.remove(); }, 950);
+      }, 150);
+    }
+
+    splash.addEventListener('click', openSite);
+    splash.addEventListener('touchend', function(e) { e.preventDefault(); openSite(e); });
+  })();
 </script>
 </body>
 </html>
