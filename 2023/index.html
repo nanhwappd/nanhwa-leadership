@@ -416,7 +416,137 @@
     min-width: 0;
   }
     .hero-cover { width: 100%; max-height: 480px; overflow: hidden; }
-    .hero-cover img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; }  </style>
+    .hero-cover img { width: 100%; height: 580px; object-fit: cover; object-position: center top; display: block; will-change: transform; }
+
+  /* ══ MOTION DESIGN ══ */
+
+  /* Scroll Reveal — fade + rise */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+                transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Scroll Reveal — slide from left */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-22px);
+    transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+                transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    transition-delay: var(--d, 0ms);
+  }
+  .reveal-left.in { opacity: 1; transform: translateX(0); }
+
+  /* Hero entrance — children stagger on load */
+  @keyframes heroUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: heroUp 0.75s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+  .hero-inner > *:nth-child(6) { animation-delay: 0.55s; }
+
+  /* Section label kinetic underline */
+  .section-label {
+    position: relative;
+  }
+  .section-label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    height: 1px;
+    width: 0;
+    background: var(--cohort);
+    transition: width 0.7s cubic-bezier(0.16,1,0.3,1) 0.25s;
+  }
+  .section-label.in::after { width: 60px; }
+
+  /* Speaker cards */
+  .speaker-card {
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.35s, box-shadow 0.35s;
+  }
+  .speaker-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--cohort-light);
+    box-shadow: 0 16px 40px rgba(123,94,167,0.25);
+  }
+
+  /* Milestone cards */
+  .milestone {
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.35s, box-shadow 0.35s;
+  }
+  .milestone:hover {
+    transform: translateY(-4px);
+    border-color: var(--cohort);
+    box-shadow: 0 8px 24px rgba(123,94,167,0.2);
+  }
+
+  /* Dim (cert) cards */
+  .dim {
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.3s, background 0.3s;
+  }
+  .dim:hover {
+    transform: translateY(-4px);
+    border-color: rgba(123,94,167,0.5);
+    background: rgba(123,94,167,0.16);
+  }
+
+  /* Timeline items slide-in from left */
+  .timeline-day-header {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+                transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .timeline-day-header.in { opacity: 1; transform: translateY(0); }
+
+  .timeline-item {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1),
+                transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    transition-delay: var(--d, 0ms);
+  }
+  .timeline-item.in { opacity: 1; transform: translateX(0); }
+
+  /* Photo items */
+  .photo-item {
+    transition: transform 0.32s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.32s, box-shadow 0.32s;
+  }
+  .photo-item:hover {
+    transform: scale(1.05);
+    border-color: var(--cohort-light);
+    box-shadow: 0 8px 28px rgba(123,94,167,0.3);
+  }
+
+  /* Quote + significance hover */
+  .quote-block {
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .quote-block:hover {
+    border-color: rgba(123,94,167,0.45);
+    box-shadow: 0 4px 20px rgba(123,94,167,0.12);
+  }
+
+  /* Nav active */
+  .nav a.nav-active {
+    color: var(--cohort-light) !important;
+    border-bottom-color: var(--cohort) !important;
+  }
+  </style>
 </head>
 <body>
 
@@ -424,9 +554,9 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-logos">
-      <img src="https://drive.google.com/uc?export=view&id=1KYs0SAanRDAIIAplcaE6B8qIs1c8v1_q" alt="南华独中校徽">
+      <img src="assets/school-crest.png" alt="南华独中校徽">
       <div class="logo-divider"></div>
-      <img src="https://drive.google.com/uc?export=view&id=1f0T3-febqAQVZxcgA1yaqVMcuRAOQFC6" alt="南华学生领袖训练营">
+      <img src="assets/camp-logo.png" alt="南华学生领袖训练营">
     </div>
     <div class="school-tag">NAN HWA HIGH SCHOOL, MANJUNG</div>
     <div class="cohort-badge">第一阶 · 启航篇</div>
@@ -438,7 +568,7 @@
 </header>
 <!-- Hero Cover Photo -->
 <div class="hero-cover">
-  <img src="https://drive.google.com/uc?export=view&id=1F123KbXYMSR4BC-Zto4yy0TY00rCx-bk" alt="第一届南华青年领袖训练营 2023">
+  <img src="photos/14.jpg" alt="第一届南华青年领袖训练营 2023">
 </div>
 
 <!-- Nav -->
@@ -476,28 +606,28 @@
   <h2 class="section-title">讲师阵容</h2>
   <div class="speakers">
     <div class="speaker-card">
-      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1r9O97qua1lL1JZD5MNSvtBWg2zYulEar" alt="颜登逸">
+      <img class="speaker-avatar" src="speakers/speaker-01-yan.jpg" alt="颜登逸">
       <div class="role">董事长</div>
       <div class="name">颜登逸</div>
       <div class="topic">《大局观》</div>
       <div class="desc">以开阔思维透彻全局，超越个人利益制定长远规划，提出领袖三层次：领导、领袖、精神领袖。</div>
     </div>
     <div class="speaker-card">
-      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1bCcfZv5UNJ7hues_1NDbbp7SAg86ZAvL" alt="何添胜">
+      <img class="speaker-avatar" src="speakers/speaker-02-he.jpg" alt="何添胜">
       <div class="role">董事总务</div>
       <div class="name">何添胜</div>
       <div class="topic">《领袖之才与德》</div>
       <div class="desc">解析牛根生四象限：有德有才、有德无才、无德有才、无德无才，才德比喻为树叶与树根。</div>
     </div>
     <div class="speaker-card">
-      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1CuwtBZpYGhswc4uQJOVF-14e45bfVDYo" alt="陳麗冰博士">
+      <img class="speaker-avatar" src="speakers/speaker-03-chen.jpg" alt="陳麗冰博士">
       <div class="role">校长</div>
       <div class="name">陳麗冰博士</div>
       <div class="topic">《才德兼备》</div>
       <div class="desc">「真正的领袖，是让别人安心跟随你，而不是畏惧你的能力。」以IWS量表双维度深化内化。</div>
     </div>
     <div class="speaker-card">
-      <img class="speaker-avatar" src="https://drive.google.com/uc?export=view&id=1tHkXKnnXIeK5V1udSV613S3EFDYpuXQE" alt="俞思佳">
+      <img class="speaker-avatar" src="speakers/speaker-04-yu.jpg" alt="俞思佳">
       <div class="role">校友</div>
       <div class="name">俞思佳</div>
       <div class="topic">《法律与领袖》</div>
@@ -734,20 +864,20 @@
   </div>
   <div class="photo-track-wrap">
     <div class="photo-track" id="photoTrack2023">
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1F123KbXYMSR4BC-Zto4yy0TY00rCx-bk" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1towqNd7FMiCQu1mIGxNqpZHbuZcZLNhY" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1jcSpemy0aqNcVk_OfnrfvFqPFdZkL4e1" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1mGnpRbli5eqQ2FzH78O4d2rjJEMtYj7s" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1bnrfiVv_YN7a4d_wgWiuokgnNAjoA-ZB" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1lEmn_hDshIm2vAMmqNL8L8GCfzBTgQsw" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1t6kJ_w1U5KX7aYt5MHM04_EIqhyv9WCR" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1xL3Gs_6Q560Zwlv6uPVT5vIOqsungK_Y" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1exHdZVc6ECOjOSG66XQC8arKG-H1EslA" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=12wprwE0nVS2zkIUfaotrP9coH9in3t6D" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1Zqz6Lms90Wpf6uRZNoZl0nscQE89b01-" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=1B-Ji-z2OqoBC_-Q3PAtUOBuOHF7YOq5d" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=15T_XWHe05E9cXbANoVC4COn6YDMUBHLA" alt="营会照片" loading="lazy"></div>
-      <div class="photo-item" onclick="openLightbox(this)"><img src="https://drive.google.com/uc?export=view&id=19-MqYuW47Ft96qvnA2jWsLXPLtGph9oy" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/01.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/02.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/03.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/04.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/05.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/06.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/07.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/08.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/09.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/10.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/11.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/12.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/13.jpg" alt="营会照片" loading="lazy"></div>
+      <div class="photo-item" onclick="openLightbox(this)"><img src="photos/14.jpg" alt="营会照片" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -819,15 +949,17 @@
 </div>
 
 <script>
-  // Drag-to-scroll photo track
+  // ── Drag-to-scroll photo track ──
   const track = document.getElementById('photoTrack2023');
-  let isDown = false, startX, scrollLeft;
-  track.addEventListener('mousedown', e => { isDown = true; track.classList.add('active'); startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
-  track.addEventListener('mouseleave', () => { isDown = false; });
-  track.addEventListener('mouseup', () => { isDown = false; });
-  track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+  if (track) {
+    let isDown = false, startX, scrollLeft;
+    track.addEventListener('mousedown', e => { isDown = true; track.classList.add('active'); startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+    track.addEventListener('mouseleave', () => { isDown = false; });
+    track.addEventListener('mouseup', () => { isDown = false; });
+    track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+  }
 
-  // Lightbox
+  // ── Lightbox ──
   function openLightbox(el) {
     const img = el.querySelector('img');
     if (!img) return;
@@ -839,6 +971,136 @@
       document.getElementById('lightbox').classList.remove('active');
     }
   }
+
+  // ── Scroll Reveal Observer ──
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+
+  // Section labels (kinetic underline + fade)
+  document.querySelectorAll('.section-label').forEach(el => {
+    el.classList.add('reveal');
+    revealObs.observe(el);
+  });
+
+  // Section titles
+  document.querySelectorAll('.section-title').forEach(el => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', '80ms');
+    revealObs.observe(el);
+  });
+
+  // Body paragraphs — subtle reveal
+  document.querySelectorAll('.section > p').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${120 + i * 50}ms`);
+    revealObs.observe(el);
+  });
+
+  // Significance + quote blocks
+  document.querySelectorAll('.significance, .quote-block').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${i * 60}ms`);
+    revealObs.observe(el);
+  });
+
+  // Speaker cards — stagger
+  document.querySelectorAll('.speaker-card').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${i * 90}ms`);
+    revealObs.observe(el);
+  });
+
+  // Milestone cards — stagger
+  document.querySelectorAll('.milestone').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${i * 80}ms`);
+    revealObs.observe(el);
+  });
+
+  // Dim (cert) cards — stagger
+  document.querySelectorAll('.dim').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${i * 60}ms`);
+    revealObs.observe(el);
+  });
+
+  // Timeline day headers
+  document.querySelectorAll('.timeline-day-header').forEach(el => revealObs.observe(el));
+
+  // Timeline items — per-day stagger (reset counter each day)
+  document.querySelectorAll('.timeline-day').forEach(day => {
+    day.querySelectorAll('.timeline-item').forEach((el, i) => {
+      el.style.setProperty('--d', `${80 + i * 65}ms`);
+      revealObs.observe(el);
+    });
+  });
+
+  // Photo section labels
+  document.querySelectorAll('.photo-section .section-label, .photo-section .section-title').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.setProperty('--d', `${i * 80}ms`);
+    revealObs.observe(el);
+  });
+
+  // ── Milestone Count-Up ──
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const raw = el.textContent.trim();
+      const num = parseInt(raw.replace(/[^0-9]/g, ''));
+      if (isNaN(num) || raw.startsWith('第')) return; // skip ordinal text
+      const suffix = raw.replace(/^[0-9]+/, '');
+      const start = performance.now();
+      const dur = 900;
+      const step = (now) => {
+        const t = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // cubicOut
+        el.textContent = Math.round(eased * num) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.milestone .num').forEach(el => countObs.observe(el));
+
+  // ── Hero Cover Parallax ──
+  const heroCover = document.querySelector('.hero-cover');
+  const heroImg = heroCover ? heroCover.querySelector('img') : null;
+  if (heroImg) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const bottom = heroCover.getBoundingClientRect().bottom;
+        if (bottom > 0) heroImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  // ── Nav Active Section Tracking ──
+  const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+  const sections = Array.from(document.querySelectorAll('section[id], .photo-section[id]'));
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('nav-active'));
+        const link = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('nav-active');
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => navObs.observe(s));
 </script>
 </body>
 </html>
