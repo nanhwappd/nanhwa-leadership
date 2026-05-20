@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
@@ -268,7 +268,8 @@
   @media (max-width: 480px) {
     .rpg-acts { grid-template-columns: 1fr; }
   }
-</style>
+    .hero-cover { width: 100%; max-height: 480px; overflow: hidden; }
+    .hero-cover img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; }  </style>
 </head>
 <body>
 
@@ -276,9 +277,9 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-logos">
-      <img src="../校徽(高清).png" alt="南华独中校徽">
+      <img src="https://drive.google.com/uc?export=view&id=1KYs0SAanRDAIIAplcaE6B8qIs1c8v1_q" alt="南华独中校徽">
       <div class="logo-divider"></div>
-      <img src="../圖片_20260518172236_448_2.png" alt="南华学生领袖训练营">
+      <img src="https://drive.google.com/uc?export=view&id=1f0T3-febqAQVZxcgA1yaqVMcuRAOQFC6" alt="南华学生领袖训练营">
     </div>
     <div class="school-tag">NAN HWA HIGH SCHOOL, MANJUNG</div>
     <div class="cohort-badge">第二阶 · 成长篇</div>
@@ -288,6 +289,10 @@
     <div class="hero-motto">「天道酬勤，勤者胜天。」</div>
   </div>
 </header>
+<!-- Hero Cover Photo -->
+<div class="hero-cover">
+  <img src="https://drive.google.com/uc?export=view&id=1JK6VMw3gsrpPCeXCu_rzCSKfdDRCRo9p" alt="第二届南华青年领袖训练营 2024">
+</div>
 
 <!-- Nav -->
 <nav class="nav">
@@ -472,20 +477,6 @@
   <p style="font-size:13px;color:var(--muted);margin-top:16px;">出席嘉宾：董事长颜登逸先生、董事总务何添胜先生、董事副总务林道祥先生、校长陳麗冰博士及南华独中全体行政正副主任。</p>
 </section>
 
-<!-- News -->
-<section class="section" id="news">
-  <div class="section-label">PRESS COVERAGE</div>
-  <h2 class="section-title">新闻报导</h2>
-  <p>以下为本届训练营的官方脸书新闻报导，点击可直接前往原文。</p>
-  <div class="fb-wrap">
-    <div class="fb-post"
-      data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0WYBgsYDrqKkKkV9U4TU8Dcw8ksKqBnG53WtKW2RYXBAo8nTSjEgFB5gWLTMFyivLl"
-      data-width="500"
-      data-show-text="true">
-    </div>
-  </div>
-</section>
-
 <!-- Photos -->
 <section class="photo-section" id="photos">
   <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
@@ -499,6 +490,20 @@
       <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
       <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
       <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- News -->
+<section class="section" id="news">
+  <div class="section-label">PRESS COVERAGE</div>
+  <h2 class="section-title">新闻报导</h2>
+  <p>以下为本届训练营的官方脸书新闻报导，点击可直接前往原文。</p>
+  <div class="fb-wrap">
+    <div class="fb-post"
+      data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0WYBgsYDrqKkKkV9U4TU8Dcw8ksKqBnG53WtKW2RYXBAo8nTSjEgFB5gWLTMFyivLl"
+      data-width="500"
+      data-show-text="true">
     </div>
   </div>
 </section>
@@ -555,3 +560,6 @@
 </script>
 </body>
 </html>
+
+
+

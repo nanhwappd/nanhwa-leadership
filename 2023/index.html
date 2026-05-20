@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
@@ -347,7 +347,8 @@
     flex: 1 1 300px;
     min-width: 0;
   }
-</style>
+    .hero-cover { width: 100%; max-height: 480px; overflow: hidden; }
+    .hero-cover img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; }  </style>
 </head>
 <body>
 
@@ -355,9 +356,9 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-logos">
-      <img src="../校徽(高清).png" alt="南华独中校徽">
+      <img src="https://drive.google.com/uc?export=view&id=1KYs0SAanRDAIIAplcaE6B8qIs1c8v1_q" alt="南华独中校徽">
       <div class="logo-divider"></div>
-      <img src="../圖片_20260518172236_448_2.png" alt="南华学生领袖训练营">
+      <img src="https://drive.google.com/uc?export=view&id=1f0T3-febqAQVZxcgA1yaqVMcuRAOQFC6" alt="南华学生领袖训练营">
     </div>
     <div class="school-tag">NAN HWA HIGH SCHOOL, MANJUNG</div>
     <div class="cohort-badge">第一阶 · 启航篇</div>
@@ -367,6 +368,10 @@
     <div class="hero-motto">「才德兼备，方能启航。」</div>
   </div>
 </header>
+<!-- Hero Cover Photo -->
+<div class="hero-cover">
+  <img src="https://drive.google.com/uc?export=view&id=1F123KbXYMSR4BC-Zto4yy0TY00rCx-bk" alt="第一届南华青年领袖训练营 2023">
+</div>
 
 <!-- Nav -->
 <nav class="nav">
@@ -502,6 +507,24 @@
   <p style="font-size:13px;color:var(--muted);margin-top:24px;">就职仪式与会嘉宾：董事长颜登逸先生、副董事长拿督叶绍利、董事总务何添胜先生、副总务林道祥董事、校长陳麗冰博士、家长教师联合会主席叶燕妮女士、校董会理事陳惠芝女士。</p>
 </section>
 
+<!-- Photos -->
+<section class="photo-section" id="photos">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
+    <div class="section-label">GALLERY</div>
+    <h2 class="section-title">营会照片</h2>
+  </div>
+  <div style="max-width:960px;margin:0 auto;padding:0 24px;">
+    <iframe
+      src="https://drive.google.com/embeddedfolderview?id=1bdsiH3nIBqtkNlFWZGaxBUQoTMoWt5Bx#grid"
+      style="width:100%;height:600px;border:0;border-radius:12px;background:#111;"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+    </div>
+  </div>
+</section>
+
 <!-- News -->
 <section class="section" id="news">
   <div class="section-label">PRESS COVERAGE</div>
@@ -512,34 +535,6 @@
       data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid02hj7LbLKRwFCpQ3Ed9Dps8ZbiXF5PiDhNCytqHd795Qa2gtWJhKWHCdYYtbnNN8Kql"
       data-width="500"
       data-show-text="true">
-    </div>
-  </div>
-</section>
-
-<!-- Photos -->
-<section class="photo-section" id="photos">
-  <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
-    <div class="section-label">GALLERY</div>
-    <h2 class="section-title">营会照片</h2>
-  </div>
-  <div class="photo-track-wrap">
-    <div class="photo-track" id="photoTrack2023">
-      <!-- 照片将在此处显示。替换 src="photos/01.jpg" 等路径即可。 -->
-      <div class="photo-item" onclick="openLightbox(this)">
-        <div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div>
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div>
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div>
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div>
-      </div>
-      <div class="photo-item" onclick="openLightbox(this)">
-        <div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div>
-      </div>
     </div>
   </div>
 </section>
@@ -620,3 +615,6 @@
 </script>
 </body>
 </html>
+
+
+

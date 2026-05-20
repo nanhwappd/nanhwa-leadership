@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
@@ -148,16 +148,27 @@
     .design-thinking .dt-step:nth-child(4),
     .design-thinking .dt-step:nth-child(5) { grid-column: span 1; }
   }
-</style>
+    .srcp-narrative { margin-top: 32px; display: flex; flex-direction: column; gap: 28px; }
+    .srcp-block { background: rgba(255,255,255,0.04); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 20px 24px; }
+    .srcp-sub { color: var(--gold); font-size: 1rem; margin: 0 0 12px; letter-spacing: .05em; }
+    .srcp-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .stag { background: rgba(180,140,60,0.15); border: 1px solid rgba(180,140,60,0.4); color: var(--gold); padding: 4px 12px; border-radius: 20px; font-size: .82rem; }
+    .srcp-phases { display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+    .srcp-phase { display: flex; gap: 16px; align-items: flex-start; }
+    .sp-num { font-size: 1.6rem; color: var(--gold); line-height: 1; min-width: 36px; }
+    .sp-content strong { color: var(--gold); display: block; margin-bottom: 6px; }
+    .sp-content p { margin: 0; color: var(--soft); font-size: .92rem; }
+    .sig-quote { font-size: 1.1rem; font-style: italic; color: var(--gold); border-left: 2px solid var(--gold); padding-left: 16px; margin-bottom: 16px; }      .hero-cover { width: 100%; max-height: 480px; overflow: hidden; }
+    .hero-cover img { width: 100%; height: 480px; object-fit: cover; object-position: center top; display: block; }  </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-logos">
-      <img src="../校徽(高清).png" alt="南华独中校徽">
+      <img src="https://drive.google.com/uc?export=view&id=1KYs0SAanRDAIIAplcaE6B8qIs1c8v1_q" alt="南华独中校徽">
       <div class="logo-divider"></div>
-      <img src="../圖片_20260518172236_448_2.png" alt="南华学生领袖训练营">
+      <img src="https://drive.google.com/uc?export=view&id=1f0T3-febqAQVZxcgA1yaqVMcuRAOQFC6" alt="南华学生领袖训练营">
     </div>
     <div class="school-tag">NAN HWA HIGH SCHOOL, MANJUNG</div>
     <div class="cohort-badge">第三阶 · 使命篇</div>
@@ -167,6 +178,10 @@
     <div class="hero-motto">「格局决定方向，温度决定距离。」</div>
   </div>
 </header>
+<!-- Hero Cover Photo -->
+<div class="hero-cover">
+  <img src="https://drive.google.com/uc?export=view&id=1kyRHYc1YSH_M9-s2bzowFqcmy7RRPC3m" alt="第三届南华青年领袖训练营 2025">
+</div>
 
 <nav class="nav">
   <a href="#about">营会简介</a>
@@ -277,28 +292,59 @@
 <section class="section" id="srcp">
   <div class="section-label">SOCIAL RESPONSIBILITY ACTION PLAN</div>
   <h2 class="section-title">社会责任行动计划（SRCP）</h2>
-  <p>使命篇最具历史意义的制度创新——领袖培育第一次走出校园，真实进入社区。</p>
+  <p>使命篇最具历史意义的制度创新——南华独中推动"社会责任行动计划"，从学会团体走进社区服务，学生以行动与真诚回应世界。</p>
 
   <div class="srcp-box">
     <h3>规模与成果</h3>
     <div class="srcp-stats">
       <div class="srcp-stat"><div class="s-num">18</div><div class="s-label">学会参与</div></div>
-      <div class="srcp-stat"><div class="s-num">8</div><div class="s-label">合作华小</div></div>
-      <div class="srcp-stat"><div class="s-num">2</div><div class="s-label">阶段：计划展示+对接会</div></div>
+      <div class="srcp-stat"><div class="s-num">10</div><div class="s-label">华小参与遴选</div></div>
+      <div class="srcp-stat"><div class="s-num">2</div><div class="s-label">阶段：计划展示 + 对接会</div></div>
+    </div>
+  </div>
+
+  <div class="srcp-narrative">
+    <div class="srcp-block">
+      <h3 class="srcp-sub">计划宗旨</h3>
+      <div class="srcp-tags">
+        <span class="stag">资源共享</span>
+        <span class="stag">需求对接</span>
+        <span class="stag">实践出击</span>
+      </div>
+      <p>来自南华独中18个学会团体的代表学生们不再只是聆听，而是亲自站上舞台，展现他们筹备已久的社会责任行动计划。这项汇聚教育热情与社区理想的计划，成功吸引曼绒县10所华小校长及代表亲自到场参与遴选、配对与对接。</p>
+      <p>各学会在活动前已完成初步计划书撰写，并开放供全曼绒县华小校长预先阅览：结合各学会专长，设计出具特色、具实效的社区方案；关注社区与华小真实需求，进行精准对接与合作洽谈；透过实践深化学生的社会责任与服务精神。</p>
     </div>
 
-    <h3>设计思维五环工作坊</h3>
-    <div class="design-thinking">
-      <div class="dt-step"><div class="dt-num">01</div><div class="dt-name">共情</div><div class="dt-desc">深入了解社区需要</div></div>
-      <div class="dt-step"><div class="dt-num">02</div><div class="dt-name">定义</div><div class="dt-desc">精准厘定问题</div></div>
-      <div class="dt-step"><div class="dt-num">03</div><div class="dt-name">创意</div><div class="dt-desc">头脑风暴可行方案</div></div>
-      <div class="dt-step"><div class="dt-num">04</div><div class="dt-name">原型</div><div class="dt-desc">快速制作可测试方案</div></div>
-      <div class="dt-step"><div class="dt-num">05</div><div class="dt-name">测试</div><div class="dt-desc">向校方及华小代表呈报</div></div>
+    <div class="srcp-block">
+      <h3 class="srcp-sub">双环节活动</h3>
+      <div class="srcp-phases">
+        <div class="srcp-phase">
+          <div class="sp-num">①</div>
+          <div class="sp-content">
+            <strong>计划书展示会</strong>
+            <p>18个学会逐一向现场华小代表简报其计划内容，涵盖中华文化传承、技艺推广、艺术体验、文化教育到环境永续等多个维度。各团队力求用短短数分钟呈现"这个计划为何值得合作"。</p>
+          </div>
+        </div>
+        <div class="srcp-phase">
+          <div class="sp-num">②</div>
+          <div class="sp-content">
+            <strong>计划书对接会</strong>
+            <p>全场化为自由流动的对话空间——各学会设置咨询窗口，由学生自己接待前来的校长与代表，说明计划细节、听取反馈、当场协商调整。考验表达能力，更考验共情能力。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="srcp-block">
+      <h3 class="srcp-sub">活动回应：真需求，真对话，真合作</h3>
+      <p>本次对接共吸引了10所华小参与，部分计划当场获得认领，多数达成合作意向，还有部分校方表示将与学会进一步跟进讨论合作细节。许多校长在对谈后留下积极正面的回馈，并表示愿意在未来促成建教合作。</p>
     </div>
   </div>
 
   <div class="significance">
-    <p>学生是执行主体，不是观摩者。部分计划在营内计划展示会当场获得认领，营后学生自主接待校长召开对接会，将计划落地为真实社区行动。</p>
+    <div class="sig-quote">"社会责任，不只是社会需要你，而是你愿意去成为一部分。"</div>
+    <p>南华独中秉持"美美与共·天下大同"的教育资源共享理念，让学生在"做中学、行中悟"。每一份计划书并非成品，而是一封"邀请函"——邀请华小一起共同参与、共同设计，打造真正有社区温度的教育合作。</p>
+    <p>这一天，计划书不再是纸面文件，而是学生伸出的手，握住了社区的回应。</p>
   </div>
 </section>
 
@@ -351,6 +397,23 @@
   <p>使命篇是四届系列的转折点。前两届建构了内在框架（才德+勤奋），第三届将这个框架向外打开——领袖的使命不止于个人成长，而在于以自身的温度点燃社区。18学会对接8所华小，是这届训练营留给南华的最具体礼物。</p>
 </section>
 
+<!-- Photos -->
+<section class="photo-section" id="photos">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
+    <div class="section-label">GALLERY</div>
+    <h2 class="section-title" style="margin-bottom:32px;">营会照片</h2>
+  </div>
+  <div class="photo-track-wrap">
+    <div class="photo-track" id="photoTrack2025">
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- News -->
 <section class="section" id="news">
   <div class="section-label">PRESS COVERAGE</div>
@@ -374,23 +437,6 @@
       data-href="https://www.facebook.com/sekolahtingginanhwa/posts/pfbid0EiPBnKRtpGkgF1j54TnzvTcQSVbSdmiwy7gv5bPr2FrZeWdvuYbeu2jsQ1B4Vdsyl"
       data-width="500"
       data-show-text="true">
-    </div>
-  </div>
-</section>
-
-<!-- Photos -->
-<section class="photo-section" id="photos">
-  <div style="max-width:760px;margin:0 auto;padding:0 24px 16px;">
-    <div class="section-label">GALLERY</div>
-    <h2 class="section-title" style="margin-bottom:32px;">营会照片</h2>
-  </div>
-  <div class="photo-track-wrap">
-    <div class="photo-track" id="photoTrack2025">
-      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
-      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
-      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
-      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
-      <div class="photo-item" onclick="openLightbox(this)"><div class="photo-placeholder"><div class="ph-icon">📷</div>营会照片</div></div>
     </div>
   </div>
 </section>
@@ -446,3 +492,8 @@
 </script>
 </body>
 </html>
+
+
+
+
+
